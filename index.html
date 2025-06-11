@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Emily, mi amor ❤</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@500&family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html">Love Notes</a>
+        <a href="music.html">Love Playlist</a>
+        <a href="map.html">Our Love Map</a>
+    </nav>
+    <div class="container">
+        <h1>Para Mi Amor, Emily ❤</h1>
+        <button id="complimentBtn">Get a Love Note 💌</button>
+        <div id="complimentDisplay"></div>
+        <div id="countdown-timer">
+            <h2>Cuddles Countdown Timer 🤗❤⏳</h2>
+            <div id="countdown"></div>
+        </div>
+    </div>
+    <script src="hearts.js"></script>
+    <script>
+        // Compliment generator
+        const compliments = [
+            "Eres lo mas bonito que me ha pasado",
+            "No tienes que pedirme que este para ti, porque siempre estare. Hacerte sentir especial es mi prioridad",
+            "No importa qué tan ocupado este, siempre hare tiempo para escucharte, porque tu eres lo mas importante para mi",
+            "Tu voz es mi sonido favorito en el mundo",
+            "Mi corazon ya no es mio, es completamente tuyo",
+            "Me encanta mirar tus ojitos de miel",
+            "Being with you feels like home. Tu eres mi hogar, mi refugio y mi felicidad",
+            "No importa que pase, siempre estare aqui para ti",
+            "Me encanta como valoras a tu familia, porque eso me dice que cuando tengamos la nuestra, sera lo mas hermoso del mundo",
+            "I love hearing you laugh",
+            "I’m so grateful to have you in my life, realmente gane el premio contigo",
+            "Te veo en mi futuro, en mis dias, en mis planes… pero mas que nada, te quiero en mi presente como mi novia y mas",
+            "Si me pagaran por cada vez que pienso en ti, ya seria millonario",
+            "No importa cuántas veces te vea, siempre voy a querer mas momentos contigo",
+            "Tu honestidad es una de las cosas que mas me atraen de ti. No solo eres hermosa, tambien eres genuina. Saber que siempre puedo confiar en lo que dices es un tesoro",
+            "Nunca dejes de hacer preguntas, porque esa curiosidad tuya es parte de lo que te hace tan especial",
+            "Tu curiosidad es contagiosa. Me encanta verte emocionarte por descubrir algo nuevo",
+            "Eres la persona con la que quiero hablar de todo, desde los temas mas profundos hasta las tonterias mas simples",
+            "No hay un solo momento en el dia en el que no quiera saber de ti. Porque estar en tu vida es lo que mas quiero",
+            "Eres la mujer con la que quiero compartir mi vida, porque se que tus valores haran que nuestro hogar sea hermoso y lleno de amor",
+            "No hay duda de que seras una mama increible algun dia",
+            "You are my forever, I love you forever",
+            "No puedo esperar para verte vestida de blanco, caminando hacia mi, siendo la mujer con la que siempre soñe casarme",
+            "No solo me gusta hablar contigo, me gusta saber que estas bien, que te sientes bien y que tienes todo lo que necesitas para estar feliz",
+            "Podemos estar haciendo algo o simplemente no hacer nada y aun asi siempre es mi parte favorita del dia",
+            "Eres mi mas grande tesoro, mi amor preciosa, y la dueña de mi corazon"
+        ];
+
+        document.getElementById('complimentBtn').addEventListener('click', () => {
+            const complimentDisplay = document.getElementById('complimentDisplay');
+            complimentDisplay.style.opacity = 0;
+            setTimeout(() => {
+                const randomIndex = Math.floor(Math.random() * compliments.length);
+                complimentDisplay.textContent = compliments[randomIndex];
+                complimentDisplay.style.opacity = 1;
+            }, 500);
+        });
+
+        // Countdown timer to the next March 18th
+        function updateCountdown() {
+            const now = new Date();
+            const currentYear = now.getFullYear();
+            let targetYear = currentYear;
+            const march18ThisYear = new Date(currentYear, 4, 2); // March is month 2 (0-indexed)
+            if (now > march18ThisYear) {
+                targetYear += 1;
+            }
+            const targetDate = new Date(targetYear, 4, 2);
+            const difference = targetDate - now;
+
+            if (difference <= 0) {
+                document.getElementById('countdown').innerHTML = 'Time for cuddles!! 🤗⏳';
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').innerHTML = `Only ${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds until our next hug! 🤗⏳`;
+        }
+
+        setInterval(updateCountdown, 1000); // Updates every second
+        updateCountdown(); // Initial call to display immediately
+    </script>
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');
+    d.innerHTML="window.__CF$cv$params={r:'92103f57ae55c5c2',t:'MTc0MjA4NjEzMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+    b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);
+    if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>

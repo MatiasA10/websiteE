@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Map 🗺️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@500&family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAL4iH-ygOCcKjRx6QxWWiKeKr3QcCvHNk&callback=initMap"></script>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Love Notes</a>
+        <a href="music.html">Love Playlist</a>
+        <a href="map.html">Our Love Map</a>
+    </nav>
+    <div class="container">
+        <h1>Our Love Map 🗺️</h1>
+        <div id="map"></div>
+        <h2>Future Destinations We travel to together ✈️</h2>
+        <ul id="future-destinations">
+            <li>Kyoto, Japan - To see the cherry blossoms together</li>
+            <li>Reykjavik, Iceland - To see the Northern Lights</li>
+        </ul>
+    </div>
+    <script src="hearts.js"></script>
+    <script>
+        function initMap() {
+            const places = [
+                { lat: 33.88029673278642, lng: -117.88179345732664, description: 'Where we first met IRL' }, // CSUF
+                { lat: 33.69109449993856, lng: -117.88900352642155, description: 'Our first kiss' }, // South coast plaze 11/5
+                { lat: 33.66389649743515, lng: -117.89580216772737, description: 'Our first night together' }, 
+                { lat: 33.81598875385843, lng: -118.15840057416993, description: 'Our first helicoper ride' },
+                { lat: 33.65173121456721, lng: -117.74462287293882, description: 'Our first Valentines' },
+                { lat: 36.81341676934251, lng: -119.74919016489113, description: 'First I love you' },
+                { lat: 33.88011241049721, lng: -117.88460033111541, description: 'First I love you' }
+            ];
+
+            const map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 2,
+                center: { lat: 0, lng: 0 }
+            });
+
+            const bounds = new google.maps.LatLngBounds();
+
+            places.forEach(place => {
+                const marker = new google.maps.Marker({
+                    position: { lat: place.lat, lng: place.lng },
+                    map: map
+                });
+
+                const infoWindow = new google.maps.InfoWindow({
+                    content: place.description
+                });
+
+                marker.addListener('click', () => {
+                    infoWindow.open(map, marker);
+                });
+
+                bounds.extend(marker.position);
+            });
+
+            map.fitBounds(bounds);
+        }
+    </script>
+</body>
+</html>
